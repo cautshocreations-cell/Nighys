@@ -421,6 +421,18 @@ tbody tr:last-child {
     background-color: rgba(0, 206, 209, 0.05);
 }
 
+/* Liens Discord */
+.discord-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.discord-link:hover {
+    color: var(--primary-light);
+    text-decoration: underline;
+}
 /* Footer */
 footer {
     background-color: rgba(0, 0, 0, 0.95);
@@ -493,3 +505,4 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+
