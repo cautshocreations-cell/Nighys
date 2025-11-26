@@ -1,0 +1,495 @@
+/* Variables de couleurs */
+:root {
+    --primary-color: #00CED1; /* Cyan/Bleu clair */
+    --primary-dark: #008B8B;
+    --primary-light: #E0FFFF;
+    --dark-bg: #0a0e1a;
+    --darker-bg: #000000;
+    --text-color: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-glow: rgba(0, 206, 209, 0.3);
+    
+    /* Couleurs des grades */
+    --grade-chef: #FFD700; /* Or */
+    --grade-bras-droit: #FF4500; /* Rouge-orangé */
+    --grade-lieutenant: #9370DB; /* Violet */
+    --grade-membre: #00CED1; /* Cyan */
+    --grade-recrue: #90EE90; /* Vert clair */
+    
+    /* Couleurs des ententes */
+    --entente-bonne: #28a745; /* Vert */
+    --entente-neutre: #ffc107; /* Jaune/Orange */
+    --entente-mauvaise: #dc3545; /* Rouge */
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #000;
+    color: var(--text-color);
+    line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Fond étoilé */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+        radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+        radial-gradient(circle at 40% 50%, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+        radial-gradient(circle at 90% 60%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 33% 80%, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+        radial-gradient(circle at 15% 90%, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+        radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+        radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+        radial-gradient(circle at 25% 60%, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 85% 85%, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+        radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+        radial-gradient(circle at 95% 35%, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+        radial-gradient(circle at 45% 25%, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+        radial-gradient(circle at 65% 55%, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+    background-size: 400px 400px, 600px 600px, 500px 500px, 700px 700px, 450px 450px,
+                     550px 550px, 650px 650px, 480px 480px, 520px 520px, 580px 580px,
+                     420px 420px, 620px 620px, 540px 540px, 460px 460px, 590px 590px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Étoiles cyan */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(0, 206, 209, 0.4) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, rgba(0, 206, 209, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 45% 85%, rgba(0, 206, 209, 0.35) 1px, transparent 1px),
+        radial-gradient(circle at 85% 35%, rgba(0, 206, 209, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 15% 65%, rgba(0, 206, 209, 0.25) 1px, transparent 1px);
+    background-size: 500px 500px, 700px 700px, 600px 600px, 800px 800px, 550px 550px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Header */
+header {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 14, 26, 0.9) 100%);
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-family: 'Georgia', serif;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+/* Navigation */
+nav {
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 206, 209, 0.3);
+}
+
+nav .container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    font-family: 'Georgia', serif;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* Main Content */
+main {
+    padding: 40px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.section {
+    margin-bottom: 60px;
+    scroll-margin-top: 80px;
+}
+
+.section h2 {
+    font-size: 2.3rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 206, 209, 0.4);
+    font-family: 'Georgia', serif;
+    letter-spacing: 1px;
+}
+
+.content-box {
+    background-color: rgba(10, 14, 26, 0.85);
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 206, 209, 0.2);
+}
+
+.content-box h3 {
+    color: var(--primary-color);
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-family: 'Georgia', serif;
+}
+
+.content-box h3:first-child {
+    margin-top: 0;
+}
+
+.content-box p {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.content-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.content-box ul li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.content-box ul li::before {
+    content: "★";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-size: 1rem;
+}
+
+.content-box ul li strong {
+    color: var(--primary-color);
+}
+
+/* Zone Info */
+.zone-info {
+    line-height: 2;
+}
+
+.zone-info strong {
+    color: var(--primary-color);
+}
+
+.map-placeholder {
+    margin-top: 30px;
+    background: rgba(10, 14, 26, 0.4);
+    border: 1px dashed rgba(0, 206, 209, 0.5);
+    border-radius: 5px;
+    padding: 60px;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+/* Tables */
+.table-container {
+    background-color: rgba(10, 14, 26, 0.85);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 206, 209, 0.2);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: rgba(0, 139, 139, 0.3);
+}
+
+thead th {
+    padding: 18px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--primary-color);
+    font-family: 'Georgia', serif;
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: rgba(0, 206, 209, 0.08);
+}
+
+tbody td {
+    padding: 15px 18px;
+    color: var(--text-secondary);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Couleurs des grades dans le tableau des membres */
+.grade-chef {
+    background-color: rgba(255, 215, 0, 0.15);
+    border-left: 4px solid var(--grade-chef);
+}
+
+.grade-chef td:first-child {
+    color: var(--grade-chef);
+    font-weight: bold;
+}
+
+.grade-bras-droit {
+    background-color: rgba(255, 69, 0, 0.15);
+    border-left: 4px solid var(--grade-bras-droit);
+}
+
+.grade-bras-droit td:first-child {
+    color: var(--grade-bras-droit);
+    font-weight: bold;
+}
+
+.grade-lieutenant {
+    background-color: rgba(147, 112, 219, 0.15);
+    border-left: 4px solid var(--grade-lieutenant);
+}
+
+.grade-lieutenant td:first-child {
+    color: var(--grade-lieutenant);
+    font-weight: bold;
+}
+
+.grade-membre {
+    background-color: rgba(0, 206, 209, 0.15);
+    border-left: 4px solid var(--grade-membre);
+}
+
+.grade-membre td:first-child {
+    color: var(--grade-membre);
+    font-weight: bold;
+}
+
+.grade-recrue {
+    background-color: rgba(144, 238, 144, 0.15);
+    border-left: 4px solid var(--grade-recrue);
+}
+
+.grade-recrue td:first-child {
+    color: var(--grade-recrue);
+    font-weight: bold;
+}
+
+/* Relations Diplomatiques */
+.relations-table .entente-bonne {
+    background-color: rgba(40, 167, 69, 0.1);
+    border-left: 4px solid var(--entente-bonne);
+}
+
+.relations-table .entente-neutre {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid var(--entente-neutre);
+}
+
+.relations-table .entente-mauvaise {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-left: 4px solid var(--entente-mauvaise);
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-bonne {
+    background-color: var(--entente-bonne);
+    color: white;
+}
+
+.badge-neutre {
+    background-color: var(--entente-neutre);
+    color: #333;
+}
+
+.badge-mauvaise {
+    background-color: var(--entente-mauvaise);
+    color: white;
+}
+
+/* Photo Gallery */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.photo-item {
+    background-color: rgba(10, 14, 26, 0.85);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 206, 209, 0.2);
+    transition: all 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-caption {
+    padding: 15px;
+    color: var(--text-secondary);
+    text-align: center;
+    background-color: rgba(0, 206, 209, 0.05);
+}
+
+/* Footer */
+footer {
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 60px;
+    border-top: 1px solid rgba(0, 206, 209, 0.3);
+    position: relative;
+    z-index: 10;
+}
+
+footer p {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    nav .container {
+        gap: 15px;
+    }
+
+    nav a {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+    }
+
+    .content-box {
+        padding: 20px;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    thead th,
+    tbody td {
+        padding: 12px 10px;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .photo-gallery {
+        grid-template-columns: 1fr;
+    }
+}
